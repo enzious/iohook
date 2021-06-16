@@ -12,7 +12,7 @@ const pkg = require('./package.json');
 const supportedTargets = require('./package.json').supportedTargets;
 
 function onerror(err) {
-  throw err;
+  // throw err;
 }
 
 /**
