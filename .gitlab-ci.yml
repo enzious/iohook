@@ -1,0 +1,13 @@
+stages:
+  - build
+
+build:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
+  script:
+    - cd glib && meson _build
+    - cd glib && ninja -C _build
+    - >-
+      sed -i 's/^  "version": "0.7.0\(-dev\)\?",/  "version": "'"${CI_COMMIT_TAG#?}"'",/' package.json
+    - npm run build
