@@ -18,7 +18,9 @@ const events = {
   8: 'mouseup',
   9: 'mousemove',
   10: 'mousedrag',
-  11: 'mousewheel'
+  11: 'mousewheel',
+  12: 'devicedown',
+  13: 'deviceup'
 };
 
 class IOHook extends EventEmitter {
@@ -199,7 +201,7 @@ class IOHook extends EventEmitter {
     if (this.active === false || !msg) return;
 
     if (events[msg.type]) {
-      const event = msg.mouse || msg.keyboard || msg.wheel;
+      const event = msg.mouse || msg.keyboard || msg.wheel || msg.device;
 
       event.type = events[msg.type];
 

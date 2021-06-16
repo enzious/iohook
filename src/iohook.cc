@@ -3,6 +3,8 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <string>
+#include <codecvt>
 #else
 #if defined(__APPLE__) && defined(__MACH__)
 #include <CoreFoundation/CoreFoundation.h>
@@ -124,6 +126,8 @@ void dispatch_proc(uiohook_event * const event) {
     case EVENT_MOUSE_MOVED:
     case EVENT_MOUSE_DRAGGED:
     case EVENT_MOUSE_WHEEL:
+    case EVENT_DEVICE_PRESSED:
+    case EVENT_DEVICE_RELEASED:
       uiohook_event event_copy;
       memcpy(&event_copy, event, sizeof(uiohook_event));
       zqueue.push(event_copy);
@@ -474,6 +478,32 @@ v8::Local<v8::Object> fillEventObject(uiohook_event event) {
     wheel->Set(v8::Isolate::GetCurrent()->GetCurrentContext(), Nan::New("y").ToLocalChecked(), Nan::New((int16_t)event.data.wheel.y));
 
     obj->Set(v8::Isolate::GetCurrent()->GetCurrentContext(), Nan::New("wheel").ToLocalChecked(), wheel);
+  } else if ((event.type >= EVENT_DEVICE_PRESSED) || (event.type <= EVENT_DEVICE_RELEASED)) {
+    v8::Local<v8::Object> device = Nan::New<v8::Object>();
+    logger_proc(LOG_LEVEL_ERROR, "Device: %s %u\n", event.data.device.button, sizeof(event.data.device.button));
+
+    // v8::Local<v8::String> button_str = v8::String::NewFromTwoByte(
+    //     v8::Isolate::GetCurrent(),
+    //     reinterpret_cast<const uint8_t*>(event.data.device.button),
+    //     NewStringType::kNormal,
+    //     sizeof(event.data.device.button))
+    //   .ToLocalChecked();
+    // Local<v8::String> name_str = v8::String::NewFromOneByte(
+    //   v8::Isolate::GetCurrent(),
+    //   event.data.device.button,
+    //   v8::NewStringType::kNormal,
+    //   static_cast<int>(sizeof(event.data.device.button))
+    // ).ToLocalChecked();
+    // Local<v8::String> button_str = Nan::New<v8::String>(reinterpret_cast<const uint8_t*>(event.data.device.button)).ToLocalChecked();
+    Local<v8::String> button_str = v8::String::NewFromUtf8(
+      v8::Isolate::GetCurrent(),
+      reinterpret_cast<const char *>(event.data.device.button),
+      v8::NewStringType::kNormal
+    ).ToLocalChecked();//.ToLocalChecked();
+    // logger_proc(LOG_LEVEL_ERROR, "Device2: %s %s\n", name_str, event.data.device.button);
+    device->Set(v8::Isolate::GetCurrent()->GetCurrentContext(), Nan::New("button").ToLocalChecked(), button_str);
+
+    obj->Set(v8::Isolate::GetCurrent()->GetCurrentContext(), Nan::New("device").ToLocalChecked(), device);
   }
   return obj;
 }

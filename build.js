@@ -69,7 +69,7 @@ function initBuild() {
 
     return uploadFiles(files)
   });
-  
+
   cpGyp();
 }
 
@@ -154,7 +154,12 @@ function build(runtime, version, abi) {
 
 function tarGz(runtime, abi) {
   const FILES_TO_ARCHIVE = {
-    "win32": ['build/Release/iohook.node', 'build/Release/uiohook.dll'],
+    "win32": [
+      'build/Release/iohook.node',
+      'build/Release/uiohook.dll',
+      'glib/_build/glib/glib-2.0-0.dll',
+      'glib/_build/subprojects/proxy-libintl/intl.dll'
+    ],
     "linux": ['build/Release/iohook.node', 'build/Release/uiohook.so'],
     "darwin": ['build/Release/iohook.node', 'build/Release/uiohook.dylib'],
   }
