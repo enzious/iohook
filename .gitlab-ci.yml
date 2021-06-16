@@ -14,5 +14,5 @@ build:
     - meson _build
     - ninja -C _build
     - cd ..
-    - npm install
+    - call npm install
     - npm run build
