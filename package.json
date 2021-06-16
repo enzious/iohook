@@ -5,8 +5,8 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "install-iohook": "node install.js",
-    "install-iohook-all": "node install.js --all",
+    "install": "node install.js",
+    "install-all": "node install.js --all",
     "build": "node build.js --upload=false",
     "deploy": "node build.js",
     "test": "jest",
