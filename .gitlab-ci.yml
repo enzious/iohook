@@ -3,8 +3,10 @@ stages:
 
 build:
   stage: build
-  # rules:
-  #   - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
+  tags:
+    - windows10
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
   script:
     - >-
       call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -14,5 +16,6 @@ build:
     - meson _build
     - ninja -C _build
     - cd ..
+    - call node extract-version.js $CI_COMMIT_TAG
     - call npm install --ignore-scripts
     - npm run build
