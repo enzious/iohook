@@ -146,6 +146,19 @@ function build(runtime, version, abi) {
     process.env.gyp_iohook_arch = arch;
   }
 
+  console.log(
+    "Building...",
+    {
+      gyp_iohook_runtime: process.env.gyp_iohook_runtime,
+      gyp_iohook_abi: process.env.gyp_iohook_abi,
+      gyp_iohook_platform: process.env.gyp_iohook_platform,
+      gyp_iohook_arch: process.env.gyp_iohook_arch,
+      runtime,
+      version,
+      abi,
+    },
+  );
+
     let proc = spawn(gypJsPath, args, {
       env: process.env
     });
