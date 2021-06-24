@@ -8,6 +8,7 @@
     "install": "node install.js",
     "install-all": "node install.js --all",
     "build": "node build.js --upload=false",
+    "build-upload": "node build.js",
     "deploy": "node build.js",
     "test": "jest",
     "docs:dev": "vuepress dev docs",
@@ -15,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wilix-team/iohook.git"
+    "url": "git+https://github.com/enzious/iohook.git"
   },
   "keywords": [
     "hook",
@@ -95,7 +96,12 @@
     ],
     [
       "electron",
-      "13.1.2",
+      "12.0.0",
+      "87"
+    ],
+    [
+      "electron",
+      "13.0.0",
       "89"
     ],
     [
