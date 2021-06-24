@@ -16,6 +16,5 @@ build:
     - meson _build
     - ninja -C _build
     - cd ..
-    - call node extract-version.js %CI_COMMIT_TAG%
     - call npm install --ignore-scripts
     - npm run build-upload
