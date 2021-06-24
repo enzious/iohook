@@ -207,6 +207,7 @@ function uploadFiles (files) {
   return new Promise(function (resolve, reject) {
     console.log('Uploading ' + files.length + ' prebuilds(s) to Github releases');
     let opts = {
+      'tag-prefix': 'v',
       pkg: pkg,
       files: files,
       upload: process.env.GITHUB_ACCESS_TOKEN
