@@ -3,4 +3,4 @@
 	url = https://github.com/enzious/libuiohook
 [submodule "glib"]
 	path = glib
-	url = git@github.com:GNOME/glib.git
+	url = https://github.com/GNOME/glib.git
