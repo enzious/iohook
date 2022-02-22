@@ -16,5 +16,5 @@ build:
     - meson _build
     - ninja -C _build
     - cd ..
-    - call npm install --ignore-scripts
-    - npm run build-upload
+    - call yarn --ignore-scripts
+    - yarn build-upload

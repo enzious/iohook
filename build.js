@@ -184,6 +184,10 @@ function build(runtime, version, abi) {
       process.env.gyp_iohook_abi = abi;
       process.env.gyp_iohook_platform = process.platform;
       process.env.gyp_iohook_arch = arch;
+
+      if (process.platform === 'darwin') {
+        args.push('--openssl_fips=X');
+      }
     }
 
     console.log('nodeGyp', args);
