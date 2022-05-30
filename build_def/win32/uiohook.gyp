@@ -27,7 +27,7 @@
 				"destination": "<(module_root_dir)/build/Release/",
 				"files": [
 					"glib/_build/glib/glib-2.0-0.dll",
-					"glib/_build/subprojects/proxy-libintl/intl.dll"
+					"glib/_build/subprojects/proxy-libintl/intl-8.dll"
 				]
 			}
 		],

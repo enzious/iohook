@@ -171,14 +171,6 @@ function build(runtime, version, abi) {
         process.env.msvs_version = 2013;
       }
       args.push('--msvs_version=' + process.env.msvs_version);
-      fs.copySync(
-        path.join(__dirname, 'glib', '_build', 'glib', 'glib-2.0-0.dll'),
-        path.join(__dirname, 'build', 'Release', 'glib-2.0-0.dll')
-      );
-      fs.copySync(
-        path.join(__dirname, 'glib', '_build', 'subprojects', 'proxy-libintl', 'intl.dll'),
-        path.join(__dirname, 'build', 'Release', 'intl.dll')
-      );
     } else {
       process.env.gyp_iohook_runtime = runtime;
       process.env.gyp_iohook_abi = abi;
@@ -212,7 +204,7 @@ function tarGz(runtime, abi) {
       'build/Release/iohook.node',
       'build/Release/uiohook.dll',
       'build/Release/glib-2.0-0.dll',
-      'build/Release/intl.dll'
+      'build/Release/intl-8.dll'
     ],
     linux: ['build/Release/iohook.node', 'build/Release/uiohook.so'],
     darwin: ['build/Release/iohook.node', 'build/Release/uiohook.dylib'],
