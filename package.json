@@ -1,6 +1,6 @@
 {
   "name": "iohook",
-  "version": "0.7.22",
+  "version": "0.7.23",
   "description": "Node.js global keyboard and mouse hook",
   "author": "Aloyan Dmitry",
   "license": "MIT",
