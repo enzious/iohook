@@ -35,3 +35,17 @@ linux-build:
     - cd ..
     - yarn --ignore-scripts
     - yarn build-upload
+
+darwin-arm64-build:
+  extends: .build
+  tags:
+    - darwin-arm64
+  script:
+    - git submodule init
+    - git submodule update
+    - cd glib
+    - meson _build
+    - ninja -C _build
+    - cd ..
+    - yarn --ignore-scripts
+    - yarn build-upload
