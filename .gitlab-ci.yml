@@ -20,7 +20,7 @@ windows-build:
     - ninja -C _build
     - cd ..
     - call yarn --ignore-scripts
-    - yarn build-upload
+    - yarn build:ci
 
 linux-build:
   extends: .build
