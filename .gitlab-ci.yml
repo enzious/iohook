@@ -34,7 +34,7 @@ linux-build:
     - ninja -C _build
     - cd ..
     - yarn --ignore-scripts
-    - yarn build-upload
+    - yarn build:ci
 
 darwin-arm64-build:
   extends: .build
@@ -48,4 +48,4 @@ darwin-arm64-build:
     - ninja -C _build
     - cd ..
     - yarn --ignore-scripts
-    - yarn build-upload
+    - yarn build:ci
