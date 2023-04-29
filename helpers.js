@@ -7,18 +7,19 @@ const fs = require('fs');
  */
 function optionsFromPackage(attempts) {
   attempts = attempts || 2;
+  let mainPath = Array(attempts).join('../');
+  const nextPath = path.join(__dirname, mainPath, 'package.json');
   if (attempts > 5) {
-    console.log("Can't resolve main package.json file");
+    console.log("Can't resolve main package.json file:", nextPath);
     return {
       targets: [],
       platforms: [process.platform],
       arches: [process.arch],
     };
   }
-  let mainPath = Array(attempts).join('../');
   try {
     const content = fs.readFileSync(
-      path.join(__dirname, mainPath, 'package.json'),
+      nextPath,
       'utf-8'
     );
     const packageJson = JSON.parse(content);
