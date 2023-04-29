@@ -2,6 +2,8 @@ const path = require('path');
 const process = require('process');
 const fs = require('fs');
 
+console.log(process.env);
+
 /**
  * Return options for iohook from package.json
  * @return {Object}
