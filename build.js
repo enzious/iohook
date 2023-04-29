@@ -7,6 +7,7 @@ const argv = require('minimist')(process.argv.slice(2), {
   string: ['version', 'runtime', 'abi'],
 });
 const pkg = require('./package.json');
+const nodeAbi = require('node-abi');
 const { optionsFromPackage } = require('./helpers');
 
 let arch = process.env.ARCH
@@ -60,9 +61,8 @@ function initBuild() {
     if (options.targets.length > 0) {
       targets = options.targets.map((e) => [
         e[0],
-        // nodeAbi.getTarget(e[1], e[0]),
+        nodeAbi.getTarget(e[1], e[0]),
         e[1],
-        e[2],
       ]);
     } else {
       const runtime = process.versions['electron'] ? 'electron' : 'node';
