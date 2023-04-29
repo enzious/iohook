@@ -1,6 +1,6 @@
 {
   "name": "iohook",
-  "version": "0.9.18",
+  "version": "0.9.19",
   "description": "Node.js global keyboard and mouse hook",
   "author": "Aloyan Dmitry",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "install": "node install.js",
+    "postinstall": "node install.js",
     "install-all": "node install.js --all",
     "build": "node build.js --all --upload=false",
     "build:ci": "node build.js --all",
