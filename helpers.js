@@ -10,7 +10,7 @@ function optionsFromPackage(attempts) {
   let mainPath = Array(attempts).join('../');
   const nextPath = path.join(__dirname, mainPath, 'package.json');
   if (attempts > 5) {
-    console.log("Can't resolve main package.json file:", nextPath);
+    console.log("Can't resolve main package.json file from", __dirname, '- to', nextPath);
     return {
       targets: [],
       platforms: [process.platform],
