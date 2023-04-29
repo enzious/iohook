@@ -1,4 +1,5 @@
 const path = require('path');
+const process = require('process');
 const fs = require('fs');
 
 /**
@@ -8,7 +9,8 @@ const fs = require('fs');
 function optionsFromPackage(attempts) {
   attempts = attempts || 2;
   let mainPath = Array(attempts).join('../');
-  const nextPath = path.join(__dirname, mainPath, 'package.json');
+  const nextPath = path.join(process.cwd(), mainPath, 'package.json');
+  //const nextPath = path.join(__dirname, mainPath, 'package.json');
   if (attempts > 5) {
     console.log("Can't resolve main package.json file from", __dirname, '- to', nextPath);
     return {
