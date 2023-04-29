@@ -108,6 +108,10 @@ function install(runtime, abi, platform, arch, cb) {
 
 const options = optionsFromPackage();
 
+options.targets = ['electron-114'];
+options.platforms = ['win32', 'darwin', 'linux'];
+options.arches = ['x64', 'arm64'];
+
 if (process.env.npm_config_targets) {
   options.targets = options.targets.concat(
     process.env.npm_config_targets.split(',')
