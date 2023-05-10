@@ -204,7 +204,8 @@ function tarGz(runtime, abi) {
       'build/Release/iohook.node',
       'build/Release/uiohook.dll',
       'build/Release/glib-2.0-0.dll',
-      'build/Release/intl-8.dll'
+      'build/Release/intl-8.dll',
+      'build/Release/pcre2-8.dll',
     ],
     linux: ['build/Release/iohook.node', 'build/Release/uiohook.so'],
     darwin: ['build/Release/iohook.node', 'build/Release/uiohook.dylib'],
