@@ -13,7 +13,6 @@
 			"libuiohook/src/x11/system_properties.c"
 		],
 		"cflags": [
-			"-std=c++14",
 			"-fPIC"
 		],
 		"link_settings": {
@@ -28,10 +27,10 @@
 				]
 		},
 		"defines": [
-			"USE_XKBCOMMON"
+			"USE_XKBCOMMON",
+			"USE_EVDEV",
 		],
 		"include_dirs": [
-			"<!(node -e \"require('nan')\")",
 			'libuiohook/include',
 			'libuiohook/src'
 		]

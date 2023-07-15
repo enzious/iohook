@@ -18,9 +18,11 @@ const modulePath = path.join(
   'Release',
   'iohook.node'
 );
+
 if (process.env.DEBUG) {
   console.info('Loading native binary:', modulePath);
 }
+
 let NodeHookAddon = require(modulePath);
 
 const events = {
@@ -34,7 +36,7 @@ const events = {
   10: 'mousedrag',
   11: 'mousewheel',
   12: 'devicedown',
-  13: 'deviceup'
+  13: 'deviceup',
 };
 
 class IOHook extends EventEmitter {
