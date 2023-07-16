@@ -15,7 +15,7 @@
 #include <queue>
 
 static bool sIsRunning = false;
-static bool sIsDebug = true;
+static bool sIsDebug = false;
 
 static HookProcessWorker* sIOHook = nullptr;
 
