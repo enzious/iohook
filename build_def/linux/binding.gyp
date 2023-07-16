@@ -20,10 +20,10 @@
 			"-fexceptions"
 		],
 		'cflags!': [
-			'-fno-exceptions'
+			"-fno-exceptions"
 		],
 		'cflags_cc!': [
-			'-fno-exceptions'
+			"-fno-exceptions"
 		],
 		"defines": [
 			"USE_XKBCOMMON",

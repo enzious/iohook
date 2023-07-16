@@ -11,7 +11,10 @@
 			"./uiohook.gyp:uiohook"
 		],
 		"cflags": [
-			"-std=c99"
+			"-std=c99",
+		],
+		"defines": [
+			"NAPI_DISABLE_CPP_EXCEPTIONS"
 		],
 		"link_settings": {
 				"libraries": [
