@@ -1,0 +1,6 @@
+[submodule "libuiohook"]
+	path = libuiohook
+	url = https://github.com/enzious/libuiohook
+[submodule "glib"]
+	path = glib
+	url = https://github.com/GNOME/glib.git
