@@ -108,7 +108,7 @@ function install(runtime, abi, platform, arch, cb) {
 
 const options = optionsFromPackage();
 
-options.targets = ['electron-114'];
+options.targets = ['electron-145'];
 options.platforms = ['win32', 'darwin', 'linux'];
 options.arches = ['x64', 'arm64'];
 
