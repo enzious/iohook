@@ -9,6 +9,7 @@ npm install iohook --save # or yarn add iohook
 iohook currently provides prebuilt versions for the following runtimes:
 
 - Electron:
+
   - 4.0.4 (ABI 69)
   - 5.X.X (ABI 70)
   - 6.X.X (ABI 73)
@@ -17,6 +18,7 @@ iohook currently provides prebuilt versions for the following runtimes:
   - 9.X.X (ABI 80)
   - 10.X.X (ABI 82)
   - 11.X.X (ABI 85)
+  - 12.X.X (ABI 87)
 
 - Node.js:
   - 8.9.X (ABI 57)
