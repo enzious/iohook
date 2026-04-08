@@ -13,7 +13,6 @@
 			"libuiohook/src/x11/system_properties.c"
 		],
 		"cflags": [
-			"-std=c++14",
 			"-fPIC"
 		],
 		"link_settings": {
@@ -21,14 +20,17 @@
 						"-Wl,-rpath,<!(node -e \"console.log('builds/' + process.env.gyp_iohook_runtime + '-v' + process.env.gyp_iohook_abi + '-' + process.env.gyp_iohook_platform + '-' + process.env.gyp_iohook_arch + '/build/Release')\")",
 						"-Wl,-rpath,<!(pwd)/build/Release/",
 						"-lX11",
-						"-lX11-xcb"
+						"-lX11-xcb",
+						"-lxkbcommon-x11",
+						"-lxkbcommon",
+						"-lXtst"
 				]
 		},
 		"defines": [
-			"USE_XKBCOMMON"
+			"USE_XKBCOMMON",
+			"USE_EVDEV",
 		],
 		"include_dirs": [
-			"<!(node -e \"require('nan')\")",
 			'libuiohook/include',
 			'libuiohook/src'
 		]

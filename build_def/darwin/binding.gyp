@@ -11,7 +11,10 @@
 			"./uiohook.gyp:uiohook"
 		],
 		"cflags": [
-			"-std=c99"
+			"-std=c99",
+		],
+		"defines": [
+			"NAPI_DISABLE_CPP_EXCEPTIONS"
 		],
 		"link_settings": {
 				"libraries": [
@@ -21,7 +24,7 @@
 				]
 		},
 		"include_dirs": [
-			"<!(node -e \"require('nan')\")",
+			'<!(node -p "require(\'node-addon-api\').include_dir")',
 			"libuiohook/include"
 		],
 		"configurations": {

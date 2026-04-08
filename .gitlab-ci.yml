@@ -1,0 +1,64 @@
+stages:
+  - build
+
+.build:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
+
+windows-build:
+  extends: .build
+  tags:
+    - windows10
+  variables:
+    # Override in CI/CD settings if the runner has a different VS install path.
+    VCVARSALL: 'C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvarsall.bat'
+  script:
+    # PowerShell does not keep env changes from a child cmd; import them into this session.
+    - |
+      $vcvars = $env:VCVARSALL
+      if (-not (Test-Path -LiteralPath $vcvars)) {
+        Write-Error "vcvarsall.bat not found: $vcvars"
+        exit 1
+      }
+      cmd /c ('call "' + $vcvars + '" x64 && set') | ForEach-Object {
+        if ($_ -match '^([^=]+)=(.*)$') {
+          Set-Item -Path ('env:' + $matches[1]) -Value $matches[2]
+        }
+      }
+    - git submodule init
+    - git submodule update
+    - cd glib
+    - meson setup _build
+    - ninja -C _build
+    - cd ..
+    - npm install --ignore-scripts
+    - npm run build:ci
+
+linux-build:
+  extends: .build
+  tags:
+    - linux
+  script:
+    - git submodule init
+    - git submodule update
+    - cd glib
+    - meson setup _build
+    - ninja -C _build
+    - cd ..
+    - npm install --ignore-scripts
+    - npm run build:ci
+
+darwin-arm64-build:
+  extends: .build
+  tags:
+    - darwin-arm64
+  script:
+    - git submodule init
+    - git submodule update
+    - cd glib
+    - meson setup _build
+    - ninja -C _build
+    - cd ..
+    - npm install --ignore-scripts
+    - npm run build:ci

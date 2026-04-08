@@ -11,25 +11,37 @@
 			"./uiohook.gyp:uiohook"
 		],
 		"cflags": [
+			"-fPIC",
+			"-fexceptions"
+		],
+		"ccflags": [
 			"-std=c++14",
-			"-fPIC"
+			"-fPIC",
+			"-fexceptions"
+		],
+		'cflags!': [
+			"-fno-exceptions"
+		],
+		'cflags_cc!': [
+			"-fno-exceptions"
 		],
 		"defines": [
-			"USE_XKBCOMMON"
+			"USE_XKBCOMMON",
+			"USE_EVDEV",
+			"NAPI_CPP_EXCEPTIONS"
 		],
 		"link_settings": {
-				"libraries": [
-						"-Wl,-rpath,<!(node -e \"console.log('builds/' + process.env.gyp_iohook_runtime + '-v' + process.env.gyp_iohook_abi + '-' + process.env.gyp_iohook_platform + '-' + process.env.gyp_iohook_arch + '/build/Release')\")",
-						"-Wl,-rpath,<!(pwd)/build/Release/"
-				]
+			"libraries": [
+				"-Wl,-rpath,<!(node -e \"console.log('builds/' + process.env.gyp_iohook_runtime + '-v' + process.env.gyp_iohook_abi + '-' + process.env.gyp_iohook_platform + '-' + process.env.gyp_iohook_arch + '/build/Release')\")",
+				"-Wl,-rpath,<!(pwd)/build/Release/"
+			]
 		},
 		"include_dirs": [
-			"<!(node -e \"require('nan')\")",
+			'<!(node -p "require(\'node-addon-api\').include_dir")',
 			"libuiohook/include"
 		],
 		"configurations": {
-			"Release": {
-			}
+			"Release": {}
 		}
 	}]
 }
